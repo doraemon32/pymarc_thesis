@@ -20,7 +20,9 @@ import pandas as pd
 #  - new requirement
 #    -add new column '原本546' and the related content in 0700 file
 #    -orig marc data not found in processMarc, e.g.041$a not exist,print all contents
-#
+# ver 1.2
+#  - new requirement
+#    -no need for 095 now so 'remove field_095'
 # --------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------
 # define filename by datetime
@@ -315,11 +317,11 @@ def processMarc(record):
         # =502  \\$a博士--國立陽明大學生醫光電研究所, 2020 => R 008.9
     )
     # =095  \\$aYMU$s220107$wkuanwu8$9local
-    field_095 = Field(
+    '''field_095 = Field(
         tag="095",
         indicators=[" ", " "],
         subfields=["a", "YMU", "s", yymmdd, "w", myName, "9", "local"],
-    )
+    )'''
     # =546
     field_546 = Field(tag="546", indicators=[" ", " "], subfields=["a", "主要內容為英文"])
     if lang == "eng":   # only eng case needs field_546
